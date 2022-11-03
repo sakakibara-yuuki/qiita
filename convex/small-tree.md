@@ -1,8 +1,10 @@
 <!--
-title: new title
-tags: クソ記事,初心者
+title:   new title
+tags:    クソ記事,初心者
+id:      669f3a7512b21c340125
 private: false
 -->
+
 
 this article is written at 2022 08 31
 
@@ -46,4 +48,3 @@ this article is written at 2022 08 31
 この概念は木だけでなく普通のグラフにもついても考えられそうだ.
 
 頂点集合VをV'とV''に分ける. V'とV''を結ぶ辺をE(V', V'')と表し, カットセットと呼ぶ.
-

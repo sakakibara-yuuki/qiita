@@ -1,8 +1,10 @@
 <!--
-title: Gmshのメモ
-tags: クソ記事,初心者
+title:   Gmshのメモ
+tags:    クソ記事,初心者
+id:      119a8a98b856dce7c87f
 private: false
 -->
+
 
 this article is written at 2022 011 4
 
@@ -38,7 +40,7 @@ Python APIを使い終わったら閉じなけらばならない
 gmsh.model.add("t1")
 
 ```
-次にモデルを追加する. 
+次にモデルを追加する.
 今回はt1と名前をつけるが, gmsh.model.add()を引数なしで呼ぶと無名のモデルが出来上がる.
 
 ```t1.py
