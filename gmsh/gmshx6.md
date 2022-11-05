@@ -1,8 +1,10 @@
 <!--
-title: gmshのx6.pyのメモ
-tags: gmsh,初心者
+title:   gmshのx6.pyのメモ
+tags:    Gmsh,初心者
+id:      abc9fd708e11fac2a05f
 private: false
 -->
+
 
 this article is written at 2022 11 04
 
