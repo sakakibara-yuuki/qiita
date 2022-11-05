@@ -1,5 +1,5 @@
 <!--
-title:   Gmshのメモ
+title:   gmshのt1.pyのメモ
 tags:    クソ記事,初心者
 id:      119a8a98b856dce7c87f
 private: false
@@ -136,6 +136,70 @@ Python APIはsnake caseもcamelCaseを定義されているがチュートリア
 目標メッシュサイズが指定されないなら, デフォルトで全体のモデルサイズに基づいて均一の粗いサイズが決められる.
 
 さて, pointを追加しよう. どのpointも異なるtagを持つ必要がある.
+
+```x6.py
+# If the tag is not provided explicitly, a new tag is automatically created, and
+# returned by the function:
+p4 = gmsh.model.geo.addPoint(0, .3, 0, lc)
+```
+もし, タグが明示的に与えられないなら, 新しいタグが自動的に作られ, 関数の帰り値として返される.
+
+```x6.py
+# Curves are Gmsh's second type of elementery entities, and, amongst curves,
+# straight lines are the simplest. The API to create straight line segments with
+# the built-in kernel follows the same conventions: the first 2 arguments are
+# point tags (the start and end points of the line), and the last (optional one)
+# is the line tag.
+#
+# In the commands below, for example, the line 1 starts at point 1 and ends at
+# point 2.
+#
+# Note that curve tags are separate from point tags - hence we can reuse tag `1'
+# for our first curve. And as a general rule, elementary entity tags in Gmsh
+# have to be unique per geometrical dimension.
+gmsh.model.geo.addLine(1, 2, 1)
+gmsh.model.geo.addLine(3, 2, 2)
+gmsh.model.geo.addLine(3, p4, 3)
+gmsh.model.geo.addLine(4, 1, p4)
+
+```
+曲線はGmshの第二の要素実体の型で, 曲線の中で直線が最も単純.
+内蔵kernelで作られる直線セグメントを作るAPIは同じ変換に従う.
+最初の二つ引数はPointタグ(始点と終点)であり, 最後の引数(optionalな一つ)はタグである.
+
+例えば, 次の下のコマンドでは, line 1はpoint1から始まりpoint2で終わる.
+
+注意するべきことは曲線のタグはPointタグとは別である.
+つまるところ, 最初の曲線にタグ1を使える.
+また, 一般的なルールとして, Gmshの要素実体タグは幾何的の次元に対して一意である必要がある.
+
+```x6.py
+# The third elementary entity is the surface. In order to define a simple
+# rectangular surface from the four curves defined above, a curve loop has first
+# to be defined. A curve loop is defined by an ordered list of connected curves,
+# a sign being associated with each curve (depending on the orientation of the
+# curve to form a loop). The API function to create curve loops takes a list
+# of integers as first argument, and the curve loop tag (which must be unique
+# amongst curve loops) as the second (optional) argument:
+gmsh.model.geo.addCurveLoop([4, 1, -2, 3], 1)
+```
+第３の要素実体は表面である.
+下で定義されているようにシンプルな四角形の表面は四つの曲線によって定義するために
+曲線ループが初めに定義されてなければならない.
+曲線ループは並び順を考慮した繋がった曲線のリストで定義される.
+符号はそれぞれのカーブにつけられる(ループ形状のカーブの向きから判断)
+曲線ループを作るAPI関数は最初の引数に整数のlistを受け取る.
+次の引数に曲線ループのタグを受け取る.
+
+```x6.py
+# We can then define the surface as a list of curve loops (only one here,
+# representing the external contour, since there are no holes--see `t4.py' for
+# an example of a surface with a hole):
+gmsh.model.geo.addPlaneSurface([1], 1)
+```
+曲線ループのリストから表面を定義できる.
+ここでは, 穴がないため外部の輪郭を表している.
+穴がある場合はt4.pyを見てくれ.
 
 ```t1.py
 # Before they can be meshed (and, more generally, before they can be used by API
