@@ -19,7 +19,7 @@ async def がついている関数をコルーチン関数と呼ぶ.
 #### コルーチンオブジェクト
 コルーチン関数が返す値をコルーチンオブジェクトと呼ぶ.
 
-``` c1.py
+```python:c1.py
 import asyncio
 
 async def main():
@@ -33,7 +33,7 @@ asyncio.run(main())
 コルーチン(関数)mainを実装している.
 コルーチン関数なのでawaitを使える.
 
-```c1-1.py
+```python:c1-1.py
 main() #うまくいかない
 ```
 単にコルーチンを呼び出しただけでは動かない.
@@ -53,7 +53,7 @@ asyncioのAPIの多くは, Awaitableオブジェクトを受け取るように�
 以下, コルーチンとTaskについて述べる.
 
 ##### Awaitableとして振る舞うコルーチン
-``` c2.py
+```python:c2.py
 import asyncio
 
 async def nested():
@@ -70,7 +70,7 @@ await nested()の返り値はprintで出力される.
 [参考url](https://qiita.com/everylittle/items/57da997d9e0507050085)
 
 ###### AwaitableとしてのTask
-``` c2-2.py
+```python:c2-2.py
 import asyncio
 
 async def nested():
@@ -95,7 +95,7 @@ asyncio.create(coro)を使って実行をスケジュールし, Taskオブジェ
 
 #### Task Group の作成
 Task Group とはタスク作成のAPIとグループ内の全てのタスクが終了するまで待機することをうまく組み合わせたもの.
-``` c3.py
+```python:c3.py
 async def main():
     async with asyncio.TaskGroup() as tg:
         task1 = tg.create_task(some_coro(...))
