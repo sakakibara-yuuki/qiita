@@ -1,8 +1,10 @@
 <!--
-title: asyncioの翻訳memo
-tags: クソ記事,初心者
+title:   asyncioの翻訳memo
+tags:    クソ記事,初心者
+id:      b01515c6e2ce13b8a069
 private: false
 -->
+
 
 this article is written at 2022 11 07
 
