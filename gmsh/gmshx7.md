@@ -1,8 +1,10 @@
 <!--
-title: gmsh
-tags: クソ記事,初心者
+title:   gmsh
+tags:    クソ記事,初心者
+id:      3d58fa9e114bbb726364
 private: false
 -->
+
 
 this article is written at 2022 11 21
 
